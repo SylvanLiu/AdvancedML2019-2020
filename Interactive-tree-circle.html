@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = {
+    "name": "Human Freedom Index",
+    "children": [
+        {
+            "name": "Personal Freedom",
+            "children": [
+                {
+                    "name": "Legal Protection&Security",
+                    "children": [
+                        {
+                            "name": "Rule of Law",
+                            "children": [
+                                {"name":"Procedural Justice"
+                                },
+                                {"name":"Civil Justice"
+                                },
+                                {
+                                "name":"Criminal Justice"
+                                }
+                                ]
+                        },
+                        
+                        {"name": "Security and Safety",
+                            "children": [
+                                {
+                                    "name" :"Homicide"
+                                },
+                                {
+                                    "name":"Disappearances, Conflicts, and Terrorism",
+                                    "children": [
+                                        {
+                                            "name":"Disappearances"
+                                        },
+                                        {
+                                            "name":"Violent Conflicts"
+                                        },
+                                        {
+                                            "name":"Organized Conflicts"
+                                        },
+                                        {
+                                            "name":"Terrorism Fatalities"
+                                        },
+                                        {
+                                            "name":"Terrorism Injuries"
+                                        },
+                                        ]
+                                },
+                                {
+                                    "name":"Women's Security and Safety",
+                                    "children": [
+                                        {
+                                            "name":"Female Genital Mutilation"
+                                        },
+                                        {
+                                            "name":"Inheritance Rights"
+                                        }
+                                        ]
+                                }
+                                ]
+                        }
+                    ]
+                },
+                {
+                    "name":"Specific Personal Freedoms",
+                    "children":[
+                        {
+                            "name":"Movement",
+                            "children":
+                            [
+                                {
+                                    "name": "Domestic Movement"
+                                },
+                                {
+                                    "name":"Foreign Movement"
+                                },
+                                {
+                                    "name":"Women's Movement"
+                                }
+                                ]
+                        },
+                        {
+                            "name":"Religion",
+                            "children":[
+                                {
+                                    "name":"Establishing and Operating Religious Organizations"
+                                },
+                                {
+                                    "name":"Harassment and Physical Hostilities"
+                                },
+                                {
+                                    "name":"Legal and Regulatory Restrictions"
+                                }
+                                ]
+                        },
+                        {
+                            "name":"Association, Assembly, and Civil Society",
+                            "children":[
+                                {
+                                    "name":"Association"
+                                },
+                                {
+                                    "name":"Assembly"
+                                },
+                                {
+                                    "name":"Establishing and Operating Political Parties"
+                                },
+                                {
+                                    "name":"Establishing and Operating Professional Organizations"
+                                },
+                                {
+                                    "name": "Establishing and Operating Educational, Sporting, and Clutural organizations"
+                                }
+                                ]
+                            
+                        },
+                        {
+                            "name":"Expression and Information",
+                            "children":[
+                                {
+                                    "name":"Press Killed"
+                                },
+                                {
+                                    "name":"Press Jailed"
+                                },
+                                {
+                                    "name":"Laws and Regulations That Influence Media Content"
+                                },
+                                {
+                                    "name":"Political Pressures and Controls On Media Content"
+                                },
+                                {
+                                    "name":"Access to Cable/Satellite"
+                                },
+                                {
+                                    "name":"Access to Foreign Newspapers"
+                                },
+                                {
+                                    "name":"State Control over Internet Access"
+                                }
+                                ]
+                        },
+                        {
+                            "name": "Identity and Relationships",
+                            "children": [
+                                {
+                                    "name":"Legal Gender"
+                                },
+                                {
+                                    "name":"Same-Sex Relationships",
+                                    "children":[
+                                        {
+                                            "name":"Male-to-Male Relationships"
+                                        },
+                                        {
+                                            "name":"Female-to-Female Relationships"
+                                        }
+                                        ]
+                                },
+                                {
+                                    "name":"Divorce"
+                                }
+                                ]
+                        }
+                        ]
+                }
+            ]
+        },
+        {
+            "name":"Economic Freedom",
+            "children":[
+                {
+                    "name":"Size of Government",
+                    "children":[
+                        {
+                            "name":"Government Consumption"
+                        },
+                        {
+                            "name":"Transfers and Subsidies"
+                        },
+                        {
+                            "name":"Government Enterprises and Investments"
+                        },
+                        {
+                            "name":"Top Marginal Tax Rate",
+                            "children":[
+                                {
+                                    "name":"Top Marginal Income Tax Rate"
+                                },
+                                {
+                                    "name":"Top Marginal Income and Payroll Tax Rates"
+                                }
+                                ]                            
+                        },
+                        {
+                            "name":"State Ownership of Assets" 
+                        }
+                        ]
+                },
+                {
+                    "name":"Legal System and Property Rights",
+                    "children":[
+                        {
+                            "name":"Judicial Independence"
+                        },
+                        {
+                            "name":"Impartial Courts"
+                        },
+                        {
+                            "name":"Protection of Property Rights"
+                        },
+                        {
+                            "name":"Military Interference in Rule of Law and Politics"
+                        },
+                        {
+                            "name":"Integrity of the Legal System"
+                        },
+                        {
+                            "name":"Legal Enforcement of Contracts"
+                        },
+                        {
+                            "name":"Regulatory Costs of the Sale of Real Property"
+                        },
+                        {
+                            "name":"Reliability of Police"
+                        },
+                        {
+                            "name":"Business Costs of Crime"
+                        }
+                        ]
+                },
+                {
+                    "name":"Sound Money",
+                    "children":[
+                        {
+                            "name":"Money Growth"
+                        },
+                        {
+                            "name":"Standard Deviation of Inflation"
+                        },
+                        {
+                            "name":"Inflation: Most Recent Year"
+                        },
+                        {
+                            "name":"Freedom to Own Foreign Currency Bank Accounts"
+                        }
+                        ]
+                },
+                {
+                    "name":"Freedom to Trade Internationally",
+                    "children":[
+                        {
+                            "name":"Tariffs",
+                            "children":[
+                                {
+                                    "name":"Revenue from Trade Taxes (% of Trade Sector)"
+                                },
+                                {
+                                    "name":"Mean Tariff Rate"
+                                },
+                                {
+                                    "name":"Standard Deviation of Tariff Rates"
+                                }
+                                ]
+                        },
+                        {
+                            "name":"Regulatory Trade Barriers",
+                            "children":[
+                                {
+                                    "name":"Nontariff Trade Barriers"
+                                },
+                                {
+                                    "name":"Compliance Costs of Importing and Exporting"
+                                }
+                                ]
+                        },
+                        {
+                            "name":"Black-Market Exchange Rates"
+                        },
+                        {
+                            "name":"Controls of the Movement of Capital and People",
+                            "children":[
+                                {
+                                    "name":"Foreign Ownership/Investment Restrictions"
+                                },
+                                {
+                                    "name":"Capital Controls"
+                                },
+                                {
+                                    "name":"Freedom of Foreigners to Visit"
+                                }
+                                ]
+                        }
+                        ]
+                },
+                {
+                    "name":"Regulation",
+                    "children":[
+                        {
+                            "name":"Credit Market Regulations",
+                            "children":[
+                                {
+                                    "name":"Credit Market Regulations",
+                                    "children":[
+                                        {
+                                            "name":"Ownership of Banks"
+                                        },
+                                        {   
+                                            "name":"Private-Sector Credit"
+                                        },
+                                        {
+                                            "name":"Interest Rate Controls/Negative Real Interest Rates"
+                                        }
+                                        ]
+                                }
+                                ]
+                        },
+                        {
+                            "name":"Labor Market Regulations",
+                            "children":[
+                                {
+                                    "name":"Hiring Regulations and Minimum Wage"
+                                },
+                                {
+                                    "name":"Hiring and Firing Regulations"
+                                },
+                                {
+                                    "name":"Centralized Collective Bargaining"
+                                },
+                                {
+                                    "name":"Hours Regulations"
+                                },
+                                {
+                                    "name":"Mandated Cost of Worker Dismissal"
+                                },
+                                {
+                                    "name":"Conscription"
+                                }
+                                ]
+                        },
+                        {
+                            "name":"Business Regulations",
+                            "children":[
+                                {
+                                    "name":"Administrative Requirements"
+                                },
+                                {
+                                    "name":"Bureaucracy Costs"
+                                },
+                                {
+                                    "name":"Starting a Business"
+                                },
+                                {
+                                    "name":"Extra Payments/Bribes/Favoritism"
+                                },
+                                {
+                                    "name":"Licensing Restrictions"
+                                },
+                                {
+                                    "name":"Cost of Tax Compliance"
+                                }
+                                ]
+                        }
+                        ]
+                }
+                ]
+        }
+    ]
+};
+
+var option = {
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        series: [
+            {
+                type: 'tree',
+
+                data: [data],
+
+                top: '18%',
+                bottom: '14%',
+
+                layout: 'radial',
+
+                symbol: 'emptyCircle',
+
+                symbolSize: 7,
+
+                initialTreeDepth: 3,
+
+                animationDurationUpdate: 750
+
+            }
+        ]
+    };;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
