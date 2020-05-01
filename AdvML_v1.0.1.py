@@ -202,6 +202,7 @@ def AP_visualisation(axs, labels, cci, data):
 # fig_1.axes[2].get_yaxis().set_visible(False)
 # axs_1[2].set_title('NMF')
 
+# Warning, delete this 'while'.
 while 1:
     # t-SNE has the best average performance, so it will be used for all following operations.
     X_TSNE = TSNE(n_components=2, init='random',
