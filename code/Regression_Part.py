@@ -1,11 +1,7 @@
 __author__ = "SylvanLiu"
-__version__ = "1.0.2"
+__version__ = "1.0.0"
 
-"""AdvML_1.py: Generate fundamental visualisation report on raw-data-level as well as rough correlation analysis on the feature-level;;
-Pre-process the original data (Reform the index and remove all useless columns);
-Roughly applying different decomposition and k-value-not-required clustering methods to the processed data,
-subsequently demonstrate the performance of those methods by visualisation.
-The relation between k-value and the performance of k-means has also been shown."""
+"""AdvML_1.py: a fast regression before the deadline xD."""
 
 
 from sklearn.linear_model import LinearRegression
