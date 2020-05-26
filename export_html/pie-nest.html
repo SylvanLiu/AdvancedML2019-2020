@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 10,
+        data: ['Eastern Europe', 'Middle East & North Africa', 'Sub-Saharan Africa', 'Latin America & the Caribbean', 'Caucasus & Central Asia', 'Oceania', 'Western Europe', 'South Asia', 'North America', 'East Asia']
+    },
+    series: [
+        {
+            name: '',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+
+            label: {
+                position: 'inner'
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                {value: 1300, name: 'Eastern Hemisphere', selected: true},
+                {value: 320, name: 'Western Hemisphere'}
+            ]
+        },
+        {
+            name: 'Region',
+            type: 'pie',
+            radius: ['40%', '55%'],
+            label: {
+                color: '#708090',
+                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                backgroundColor: '#eee',
+                borderColor: '#aaa',
+                borderWidth: 1,
+                borderRadius: 4,
+                // shadowBlur:3,
+                // shadowOffsetX: 2,
+                // shadowOffsetY: 2,
+                // shadowColor: '#999',
+                // padding: [0, 7],
+                rich: {
+                    a: {
+                        // color: '#708090',
+                        lineHeight: 22,
+                        align: 'center'
+                    },
+                    abg: {
+                        backgroundColor: '#333',
+                        width: '100%',
+                        align: 'right',
+                        height: 22,
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    hr: {
+                        
+                        borderColor: '#708090',
+                        width: '100%',
+                        borderWidth: 0.5,
+                        height: 0
+                    },
+                    // b: {
+                    //     fontSize: 16,
+                    //     lineHeight: 33
+                    // },
+                    per: {
+                        color: '#eee',
+                        backgroundColor: '#708090',
+                        padding: [2, 4],
+                        borderRadius: 2
+                    }
+                }
+            },
+            data: [
+                {value: 420, name: 'Sub-Saharan Africa'},
+                {value: 220, name: 'Eastern Europe'},
+                {value: 180, name: 'Western Europe'},
+                {value: 60, name: 'East Asia'},
+                {value: 170, name: 'South Asia'},
+                {value: 60, name: 'Caucasus & Central Asia'},
+                {value: 190, name: 'Middle East & North Africa'},
+                
+                {value: 40, name: 'Oceania'},
+                {value: 20, name: 'North America'},
+                {value: 260, name: 'Latin America & the Caribbean'}
+            ]
+        }
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+};
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
